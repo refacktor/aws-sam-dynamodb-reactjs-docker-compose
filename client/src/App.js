@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 import logo from "./logo.svg";
 import "./App.css";
@@ -6,10 +6,6 @@ import "./App.css";
 function App() {
   const [count, setCount] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
-
-  useEffect(() => {
-    incrementCount();
-  }, []);
 
   function incrementCount() {
     setIsLoading(true);
