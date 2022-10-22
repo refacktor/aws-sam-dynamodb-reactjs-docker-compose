@@ -23,3 +23,7 @@ services:
 
   dynamodb:
     image: amazon/dynamodb-local
+    command: "-jar DynamoDBLocal.jar -sharedDb -dbPath ./data"
+    volumes:
+      - "./database:/home/dynamodblocal/data"
+    working_dir: /home/dynamodblocal
