@@ -9,7 +9,11 @@ export DOCKER_DEFAULT_PLATFORM=linux/amd64
 docker-compose up --build
 ```
 
-## Test
+## Frontend
+
+- Go to http://localhost:3001/
+
+## Test the API
 
 ```bash
 curl http://127.0.0.1:3000/
@@ -34,13 +38,3 @@ curl http://127.0.0.1:3000/
 ```output
 {"Item":{"sk":"10/22/2022","count":2,"pk":"counter"}}
 ```
-
-## client
-
-```bash
-cd client
-npm i
-npm start
-```
-
-- Go to http://localhost:3001/
