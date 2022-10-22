@@ -13,7 +13,7 @@ const PARTITION_KEY = "counter";
 const SORT_KEY = new Date().toLocaleDateString();
 
 exports.rootHandler = async (event) => {
-  const { Item } = await dbClient
+  const result = await dbClient
     .get({
       TableName: TABLE_NAME,
       Key: { pk: PARTITION_KEY, sk: SORT_KEY },
@@ -21,8 +21,8 @@ exports.rootHandler = async (event) => {
     .promise();
 
   let count = 0;
-  if (Item) {
-    count = Item.count;
+  if (result && result.Item) {
+    count = result.Item.count;
   }
   count += 1;
 
@@ -34,6 +34,13 @@ exports.rootHandler = async (event) => {
         sk: SORT_KEY,
         count,
       },
+    })
+    .promise();
+
+  const { Item } = await dbClient
+    .get({
+      TableName: TABLE_NAME,
+      Key: { pk: PARTITION_KEY, sk: SORT_KEY },
     })
     .promise();
 

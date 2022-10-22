@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import logo from "./logo.svg";
 import "./App.css";
@@ -6,6 +6,10 @@ import "./App.css";
 function App() {
   const [count, setCount] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    incrementCount();
+  }, []);
 
   function incrementCount() {
     setIsLoading(true);
@@ -21,7 +25,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>{count}</p>
+        <p>{isLoading ? "loading" : count}</p>
         <button disabled={isLoading} onClick={() => incrementCount()}>
           Increment Count
         </button>
