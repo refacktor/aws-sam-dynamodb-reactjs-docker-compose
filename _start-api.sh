@@ -16,6 +16,6 @@ sam local start-api \
     --container-host-interface 0.0.0.0 \
     --container-host host.docker.internal \
     --debug \
-    --docker-volume-basedir $PWD \
+    --docker-volume-basedir "$PWD" \
     --docker-network=aws-sam-docker-compose-example-test_default \
     --region=eu-west-1
