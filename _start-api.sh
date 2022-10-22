@@ -8,8 +8,9 @@ then
     cp -r /opt/node_modules/ ./
 fi
 
-node ./create-db.js
+node ./database/create-db.js
 
+cd server
 sam local start-api \
     --host 0.0.0.0 \
     --container-host-interface 0.0.0.0 \

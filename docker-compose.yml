@@ -1,7 +1,7 @@
 version: "3.8"
 services:
   app:
-    build: .
+    build: ./server
     environment:
       TABLE_NAME: example
       DYNAMODB_ENDPOINT: http://dynamodb:8000/
