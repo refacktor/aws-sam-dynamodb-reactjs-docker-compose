@@ -2,15 +2,14 @@
 
 set -e
 
-if [ ! -d ./node_modules/ ]
-then
-    echo "Copying node_modules folder"
-    cp -r /opt/node_modules/ ./
-fi
+cd database
+echo "Installing aws-sdk"
+npm i aws-sdk
 
-node ./database/create-db.js
+echo "Creating table"
+node ./create-db.js
 
-cd server
+cd ../server
 sam local start-api \
     --host 0.0.0.0 \
     --container-host-interface 0.0.0.0 \
